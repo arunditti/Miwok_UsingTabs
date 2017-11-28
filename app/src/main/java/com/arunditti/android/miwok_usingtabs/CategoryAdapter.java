@@ -1,5 +1,6 @@
 package com.arunditti.android.miwok_usingtabs;
 
+import android.content.Context;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import android.support.v4.app.Fragment;
@@ -11,8 +12,14 @@ import android.support.v4.app.FragmentPagerAdapter;
  */
 
 public class CategoryAdapter extends FragmentPagerAdapter {
-    public CategoryAdapter(FragmentManager fm) {
+
+    final int PAGE_COUNT = 4;
+    private String tabTitles[] = new String[] { "Numbers", "Family Members", "Colors", "Phrases" };
+    private Context context;
+
+    public CategoryAdapter(FragmentManager fm, Context context) {
         super(fm);
+        this.context = context;
     }
 
     @Override
@@ -29,7 +36,13 @@ public class CategoryAdapter extends FragmentPagerAdapter {
     }
 
     @Override
+    public CharSequence getPageTitle(int position) {
+        return tabTitles[position];
+    }
+
+
+    @Override
     public int getCount() {
-        return 4;
+        return PAGE_COUNT;
     }
 }
